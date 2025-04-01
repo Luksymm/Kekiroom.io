@@ -1,0 +1,769 @@
+<%- include('layouts/header')%>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'" rel="stylesheet">
+</head>
+<body>
+    <style>
+        .aa{
+            width: 500px;
+        }
+    </style>
+    <%- include('layouts/nav')%>
+    <body>
+        <div class="banner">
+            <video autoplay loop muted>
+                <source src="vdo/vdo2.mp4" type="video/mp4">
+            </video>
+        </div>
+    
+        <style>
+            .banner {
+                width: 100%;
+                height: 75vh;
+                overflow: hidden;
+            }
+    
+            .banner video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+    
+            /* เพิ่มสไตล์ที่เหลือตามต้องการ */
+        </style>
+    <style>
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: -20px;
+        }
+
+        .card {
+            width: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 10px;
+        }
+
+        .card-category {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .card-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<!-- เริ่มหน้าอะเบ้า -->
+
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --primary-color-dark: #e91e63;
+            --text-dark: #021908;
+            --text-light: #021908;
+            --white: #fffffd;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--white);
+            font-family: Arial, sans-serif;
+        }
+
+        .section__container {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 5rem 1rem;
+            background-color: var(--white);
+        }
+
+        .section__subheader {
+            margin-bottom: 0.5rem;
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+        }
+
+        .section__subheader::after {
+            position: absolute;
+            content: "";
+            top: 50%;
+            transform: translate(1rem, -50%);
+            height: 2px;
+            width: 4rem;
+            background-color: var(--primary-color);
+        }
+
+        .section__header {
+            max-width: 600px;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section__description {
+            max-width: 600px;
+            margin-bottom: 1rem;
+            color: #021908;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            outline: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color:rgb(0, 99, 41);
+        }
+
+
+        .about__container {
+            overflow: hidden;
+            display: grid;
+            gap: 2rem;
+            background-color: var(--white);
+        }
+        .about__image img {
+            width: 325px;   /* ความกว้างที่กำหนด */
+            height: 400px;  /* ความสูงที่กำหนด */
+            object-fit: cover;  /* ทำให้รูปเต็มกล่อง */
+            margin: auto;
+            border-radius: 5px;
+            display: block;
+        }
+
+
+        @media (min-width: 768px) {
+            .about__container {
+                grid-template-columns: repeat(2, 1fr);
+                align-items:left;
+            }
+
+            .about__image {
+                text-align: left;
+            }
+        }
+    </style>
+<body>
+
+    <section class="section__container about__container" id="about">
+        <div class="about__image">
+            <img src="image/about.jpg" alt="about">
+        </div>
+        <div class="about__content">
+            <p class="section__subheader">ABOUT US</p>
+            <h2 class="section__header">Find Your Vibe, Live Your Life!</h2>
+            <p class="section__description">
+                Designed for students, our rooms combine affordability, comfort, and convenience in one perfect package.
+            </p>
+        </div>
+    </section>
+
+</body>
+
+                                
+<!-- จบหน้าอะเบ้า -->
+ 
+<style>
+    .section__container {
+        padding: 50px 20px;
+        text-align: center;
+        background-color: #fff;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    /* Subheader styles */
+    .section__subheader {
+        margin-bottom: 0.5rem;
+        position: relative;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+    }
+
+    .section__subheader::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        transform: translate(1rem, -50%);
+        height: 2px;
+        width: 4rem;
+        background-color: var(--primary-color);
+    }
+
+    
+
+</style>
+</head>
+<body>
+
+<section class="section__container room__container">
+<p class="section__subheader">Alley</p>
+
+</div>
+</section>
+
+
+<body>
+
+    <section class="hero-section">
+        <a href="<%= hostname%>/Keki/1">
+            <div class="card">
+                <div class="card-background" style="background-image: url('image/soi2.jpg');"></div>
+                <div class="content">
+                    <div class="card-category">Soi</div>
+                    <h3 class="card-heading">Keki 1</h3>
+                </div>
+            </div>
+        </a>             
+        <a href="<%= hostname%>/Keki/2">
+            <div class="card">
+                <div class="card-background" style="background-image: url('image/soi1.jpg');"></div>
+                <div class="content">
+                    <div class="card-category">Soi</div>
+                    <h3 class="card-heading">Keki 2</h3>
+                </div>
+            </div>
+        </a>
+        <a href="<%= hostname%>/Keki/3">
+            <div class="card">
+                <div class="card-background" style="background-image: url('image/soi3.jpg');"></div>
+                <div class="content">
+                    <div class="card-category">Soi</div>
+                    <h3 class="card-heading">Keki 3</h3>
+                </div>
+            </div>
+        </a>
+    </section>
+</body>
+
+<p style="text-align: center; font-size: 2em; font-weight: bold; margin-bottom: 20px;color: #021908;">Nearby Places</p>
+<style>
+    .container-wrapper {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        min-width: max-content;
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #ffffff; /* เปลี่ยนสีพื้นหลัง */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.207);
+        padding: 15px;
+        border-radius: 10px;
+        min-width: 120px;
+    }
+
+    .item i {
+        color: #e91e63; /* เปลี่ยนสีไอคอน */
+    }
+
+    .item span {
+        color: #333333; /* เปลี่ยนสีข้อความ */
+    }
+
+    .item:hover {
+        background-color: #e0e0e0; /* เมื่อเอาเมาส์ไปที่ .item เปลี่ยนพื้นหลัง */
+    }
+
+    .item img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .container-wrapper {
+            overflow-x: visible;
+        }
+
+        .container {
+            justify-content: center;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <div class="item">
+                <i class="fas fa-store-alt" style="font-size: 50px;"></i>
+                <span>7-Eleven</span>
+            </div>
+            <div class="item">
+                <i class="fas fa-utensils" style="font-size: 50px;"></i>
+                <span>Restaurants</span>
+            </div>
+            <div class="item">
+                <i class="fas fa-shopping-bag" style="font-size: 50px;"></i>
+                <span>Tops supermarket</span>
+            </div>
+            <div class="item">
+                <i class="fas fa-palette" style="font-size: 50px;"></i>
+                <span>Keki 4 Market</span>
+            </div>
+            <div class="item">
+                <i class="fas fa-pills" style="font-size: 50px;"></i>
+                <span>Pharmacy</span>
+            </div>
+            <div class="item">
+                <i class="fas fa-print" style="font-size: 50px;"></i>
+                <span>Photocopy Shop</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    #container {
+        display: flex;
+        justify-content: center;  /* ใช้สำหรับจัดตำแหน่งกลาง */
+        align-items: center;      /* จัดแนวตั้ง */
+        height: 70vh;            /* ให้มีความสูงเต็มหน้าจอ */
+        flex-direction: column;   /* ทำให้แสดงในแนวตั้ง */
+    }
+    #map {
+        height: 400px;
+        width: 80%;
+        max-width: 600px;
+        margin-bottom: 20px;      /* เพิ่มระยะห่างระหว่างแผนที่กับ iframe */
+    }
+    iframe {
+        width: 80%;
+        max-width: 600px;
+        height: 300px;
+        border: 0;
+    }
+</style>
+
+<script>
+     function initMap() {
+            const latLng = { lat: 13.7289, lng: 100.7588 };
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: latLng
+            });
+        };
+        const marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title: 'ซอยเกกีงาม ลาดกระบัง'
+        });
+</script>
+
+
+<body>
+    <div id="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1370.3197217021286!2d100.77024123510337!3d13.727561844419593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sth!4v1743495227629!5m2!1sen!2sth" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</body>
+
+
+<body>
+    <div class="red-box"></div>
+</body>
+
+
+<style>
+
+    .review.body {
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .review-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ทำให้เต็มจอ */
+    }
+
+    .review-header {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .review-header span {
+        color: #e91e63; /* สีชมพู */
+    }
+
+    .testimonials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: auto;
+    place-self: center;
+    }
+
+    .swiper {
+    padding: 20px;
+}
+
+    
+
+
+    .testimonial-item {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        
+    }
+
+    .stars {
+        color: goldenrod;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .testimonial-text {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    
+
+    .customer-name {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .swiper-pagination {
+        margin-top: 10px;
+    }
+
+    /* Form Styling */
+    .review-form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .review-form button {
+        background: #e91e63;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .review-form button:hover {
+        background: #d81b60;
+    }
+
+    .star-rating i {
+        font-size: 20px;
+        cursor: pointer;
+        color: #ddd;
+    }
+
+    .star-rating i.active {
+        color: goldenrod;
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .dormitory-alley {
+        font-size: 14.4px;
+    }
+
+    .review-image {
+        width: 200px;
+        height: 100px;
+        object-fit: cover;
+        margin: 10px auto; /* จัดกึ่งกลางรูปภาพ */
+        display: block; /* ทำให้ margin auto ทำงาน */
+    }
+    
+    
+</style>
+</head>
+<body>
+    
+    
+    <section class="testimonials">
+        <div class="swiper">
+            <div class="swiper-wrapper" id="testimonial-list"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    
+    <div class="container">
+    <div class="review-form">
+        <h3>Write a Review</h3>
+        <div class="star-rating">
+            <i class="fa fa-star" data-value="1"></i>
+            <i class="fa fa-star" data-value="2"></i>
+            <i class="fa fa-star" data-value="3"></i>
+            <i class="fa fa-star" data-value="4"></i>
+            <i class="fa fa-star" data-value="5"></i>
+        </div>
+        <select id="alley">
+            <option value="">Select Alley</option>
+            <option value="1">เกกีงาม 1</option>
+            <option value="2">เกกีงาม 2</option>
+            <option value="3">เกกีงาม 3</option>
+        </select>
+        <select id="dormitory">
+            <option value="">Select Dormitory</option>
+        </select>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <textarea id="message" placeholder="Your Review" required></textarea>
+        <input type="file" id="image" accept="image/*">
+        <button onclick="addReview()">Submit</button>
+    </div>
+</div> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        var swiper = new Swiper(".swiper", {
+            grabCursor: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        let selectedRating = 5;
+
+        document.querySelectorAll(".star-rating i").forEach(star => {
+            star.addEventListener("click", function () {
+                selectedRating = this.getAttribute("data-value");
+                document.querySelectorAll(".star-rating i").forEach(s => s.classList.remove("active"));
+                for (let i = 0; i < selectedRating; i++) {
+                    document.querySelectorAll(".star-rating i")[i].classList.add("active");
+                }
+            });
+        });
+
+        document.getElementById("alley").addEventListener("change", function () {
+            let alley = this.value;
+            let dormitorySelect = document.getElementById("dormitory");
+            dormitorySelect.innerHTML = "<option value=''>Select Dormitory</option>";
+
+            if (alley === "1") {
+                ["หอพักกฤตเมธ", "หอพักดวงระวี", "หอพักชัยพร", "หอพักSSY", "หอพักขวัญพยงค์"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            } else if (alley === "2") {
+                ["หอพักJ&W", "หอพักศิริวัฒน์", "หอพักกมล", "หอพักแตงกวา", "หอพักสุรัชนี"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            } else if (alley === "3") {
+                ["หอพักวรรธนะ", "หอพักจ้อยช้างเนียม", "หอพักกัลยรัตน์", "หอพักณิชา", "หอพักนาคบำรุงศรี"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            }
+        });
+
+        function addReview() {
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+            let dormitory = document.getElementById("dormitory").value;
+            let alley = document.getElementById("alley").options[document.getElementById("alley").selectedIndex].text;
+            let image = document.getElementById("image").files[0];
+            let imageURL = image ? URL.createObjectURL(image) : "";
+
+            if (name && message && dormitory && alley) {
+                let stars = "";
+                for (let i = 0; i < selectedRating; i++) {
+                    stars += "<i class='fa fa-star' style='color:goldenrod;'></i>";
+                }
+
+                let reviewHTML = `<div class='swiper-slide testimonial-item'>
+                    <div class='review-header'>
+                        <p class='customer-name' style='font-size: 12px;'>${name}</p>
+                        <div class='stars'>${stars}</div>
+                    </div>
+                    ${imageURL ? `<img src='${imageURL}' class='review-image'>` : ""}
+                    <p class='customer-name dormitory-alley'>${alley} ${dormitory}</p>
+                    <p class='testimonial-text'>${message}</p>
+                </div>`;
+
+                document.getElementById("testimonial-list").innerHTML += reviewHTML;
+                swiper.update();
+
+                document.getElementById("name").value = "";
+                document.getElementById("message").value = "";
+                document.getElementById("dormitory").value = "";
+                document.getElementById("image").value = "";
+                document.querySelectorAll(".star-rating i").forEach(s => s.classList.remove("active"));
+                for (let i = 0; i < 5; i++) {
+                    document.querySelectorAll(".star-rating i")[i].classList.add("active");
+                }
+                selectedRating = 5;
+            } else {
+                alert("Please fill in all fields!");
+            }
+        }
+    </script>
+
+</body>
+
+
+
+<style>
+    /* ตั้งค่าตัวแปรสีหลัก */
+    :root {
+        --text-dark: #082e12;
+        --white: #ffffff;
+        --text-light: #ccc;
+    }
+
+    /* ส่วน Footer */
+    .footer {
+        background-color: #000000;
+        padding: 20px 20px;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .footer__wrapper {
+        display: grid;
+        gap: 4rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .footer__col h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--white);
+    }
+
+    .footer__description {
+        color: var(--text-light);
+        font-size: 1rem;
+        max-width: 600px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    .footer__bar {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* ปรับการแสดงผลบนหน้าจอใหญ่ขึ้น */
+    @media (min-width: 500px) {
+        .footer__wrapper {
+            grid-template-columns: repeat(2, 1fr);
+            text-align: left;
+        }
+    }
+</style>
+</head>
+<body>
+
+<footer class="footer" id="footer-contact">
+<div class="footer__wrapper">
+    <div class="footer__col">
+        <h4>CONTACT US</h4>
+        <p class="footer__description">
+            Address: 1 Chalong Krung 1 Alley, Lat Krabang, Bangkok 10520, Thailand.
+        </p> 
+        <p class="footer__description">
+            Email: support@kekiroom.com
+        </p> 
+    </div>
+</div>
+<div class="footer__bar">
+    Copyright © 2025 Com Info. All rights reserved.
+</div>
+</footer>

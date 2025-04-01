@@ -1,0 +1,237 @@
+<%- include('layouts/header')%>
+
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<link rel="stylesheet" href="css/stylecontact.css">
+
+<body>
+    <%- include('layouts/nav')%>
+
+    <section class="rooms sec-width" id="rooms">
+        <div class="title">
+            <h2 id="title_Alley"></h2>
+        </div>
+        <div class="rooms-container">
+
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function load_data() {
+                const pathname = window.location.pathname
+                console.log(pathname);
+                const id = pathname.split("/")[2]
+                console.log(id);
+
+                const dormImages = {
+                    "J&W": [
+                        "/image/IMG_9710.jpg",
+                        "/image/IMG_9787.jpg",
+                        "/image/IMG_9788.jpg"
+                    ],
+                    "ศิริวัฒน์": [
+                        "/image/IMG_9712.jpg",
+                        "/image/IMG_9789.jpg",
+                        "/image/IMG_9790.jpg"
+                    ],
+                    "กมล": [
+                        "/image/IMG_9698.jpg",
+                        "/image/IMG_9791.jpg",
+                        "/image/IMG_9792.jpg"
+                    ],
+                    "แตงกวา": [
+                        "/image/IMG_9715.jpg",
+                        "/image/IMG_9793.jpg",
+                        "/image/IMG_9794.jpg"
+                    ],
+                    "สุรัชนี": [
+                        "/image/IMG_9713.jpg",
+                        "/image/IMG_9795.jpg",
+                        "/image/IMG_9796.jpg"
+                    ],
+                    "วรรธนะ": [
+                        "/image/IMG_9691.jpg",
+                        "/image/IMG_9809.jpg",
+                        "/image/IMG_9810.jpg"
+
+                    ],
+                    "จ้อยช้างเนียม": [
+                        "/image/IMG_9688.jpg",
+                        "/image/IMG_9799.jpg",
+                        "/image/IMG_9800.jpg"
+                    ],
+                    "กัลยรัตน์": [
+                        "/image/IMG_9720.jpg",
+                        "/image/IMG_9801.jpg",
+                        "/image/IMG_9802.jpg"
+                    ],
+                    "ณิชา": [
+                        "/image/IMG_9700.jpg",
+                        "/image/IMG_9803.jpg",
+                        "/image/IMG_9804.jpg"
+                    ],
+                    "นาคบำรุงศรี": [
+                        "/image/IMG_9690.jpg",
+                        "/image/IMG_9805.jpg",
+                        "/image/IMG_9806.jpg"
+                    ],
+                    "กฤตเมธ": [
+                        "/image/IMG_9687.jpg",
+                        "/image/IMG_9779.jpg",
+                        "/image/IMG_9780.jpg"
+                    ],
+                    "ดวงรวี": [
+                        "/image/IMG_9689.jpg",
+                        "/image/IMG_9781.jpg",
+                        "/image/IMG_9782.jpg"
+                    ],
+                    "ชัยพร": [
+                        "/image/IMG_9697.jpg",
+                        "/image/IMG_9784.jpg",
+                        "/image/IMG_9783.jpg"
+                    ],
+                    "SSY": [
+                        "/image/IMG_9718.jpg",
+                        "/image/IMG_9785.jpg",
+                        "/image/IMG_9786.jpg"
+                    ],
+                    "ขวัญพยงค์": [
+                        "/image/IMG_9686.JPG",
+                        "/image/IMG_9777.jpg",
+                        "/image/IMG_9778.jpg"
+                    ]
+
+                };
+
+                $.ajax({
+                    url: "/load_keki/" + id,
+
+                    method: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.length > 0) {
+                            let html = '';
+                            let dorms = {}; // Object เพื่อเก็บข้อมูลหอพักตามชื่อ
+
+                            data.forEach(function (row) {
+                                if (!dorms[row.dorm_name]) {
+                                    dorms[row.dorm_name] = {
+                                        gender: row.gender_type,
+                                        types: [],
+                                        water_cost: row.water_cost,
+                                        ele_cost: row.ele_cost,
+                                        tel_number: row.tel_number,
+                                        rate_cost: {}, // เปลี่ยน rate_cost เป็น object เพื่อเก็บราคาตามประเภท
+                                        images: [] // เพิ่ม array สำหรับเก็บ path รูปภาพ
+                                    };
+                                }
+                                if (row.t_name === "air conditioner") {
+                                    dorms[row.dorm_name].types.push("ห้องแอร์");
+                                    dorms[row.dorm_name].rate_cost["ห้องแอร์"] = row.rate_cost;
+                                } else if (row.t_name === "fan") {
+                                    dorms[row.dorm_name].types.push("ห้องพัดลม");
+                                    dorms[row.dorm_name].rate_cost["ห้องพัดลม"] = row.rate_cost;
+                                }
+
+                                // กำหนดรูปภาพสำหรับหอพักนี้
+                                if (dormImages[row.dorm_name]) {
+                                    dorms[row.dorm_name].images = dormImages[row.dorm_name];
+                                } else {
+                                    // ใช้รูปภาพ default หากไม่มีใน dormImages
+                                    dorms[row.dorm_name].images = ["/image/LINE_ALBUM_._250308_1.jpg"];
+                                }
+                            });
+
+                            for (let dormName in dorms) {
+                                let dorm = dorms[dormName];
+                                let gender = '';
+                                if (dorm.gender === "Female") {
+                                    gender = "หอพักหญิง";
+                                } else if (dorm.gender === "Male") {
+                                    gender = "หอพักชาย";
+                                } else {
+                                    gender = "หอพักรวม";
+                                }
+                                let type = dorm.types.join("/"); // รวมประเภทห้องเป็น "ห้องพัดลม/ห้องแอร์"
+                                let rate = '';
+                                if (dorm.types.length > 1) { // ถ้ามีทั้งสองประเภท
+                                    rate = `฿ ${dorm.rate_cost["ห้องพัดลม"]} / ฿ ${dorm.rate_cost["ห้องแอร์"]} Per Month`;
+                                } else {
+                                    rate = `฿ ${dorm.rate_cost[dorm.types[0]]} / Per Month`;
+                                }
+
+                                // สร้าง HTML สำหรับ slider รูปภาพ
+                                let imageSliderHtml = '<div class="room-image-slider">';
+                                dorm.images.forEach(imagePath => {
+                                    imageSliderHtml += `<div><img src="${imagePath}" alt="room image"></div>`;
+                                });
+                                imageSliderHtml += '</div>';
+
+                                html += `<article class="room">
+                                            <div class="room-image">
+                                                ${imageSliderHtml}
+                                            </div>
+                                            <div class="room-text">
+                                                <h3 class="dorm-title">หอพัก${dormName}</h3>
+                                                <ul>
+                                                    <li style="font-size: 1.2em;">
+                                                        <i class="fas fa-arrow-alt-circle-right"></i>
+                                                        ${gender}
+                                                    </li>
+                                                    <li style="font-size: 1.2em;">
+                                                        <i class="fas fa-arrow-alt-circle-right"></i>
+                                                        ${type}
+                                                    </li>
+                                                    <li style="font-size: 1.2em;">
+                                                        <i class="fas fa-arrow-alt-circle-right"></i>
+                                                        ค่าน้ำหน่วยละ ${dorm.water_cost} บาท
+                                                    </li>
+                                                    <li style="font-size: 1.2em;">
+                                                        <i class = "fas fa-arrow-alt-circle-right"></i>
+                                                        ค่าไฟหน่วยละ ${dorm.ele_cost} บาท
+                                                    </li>
+                                                    <li style="font-size: 1.2em;">
+                                                        <i class = "fas fa-arrow-alt-circle-right"></i>
+                                                        ช่องทางการติดต่อ ${dorm.tel_number}
+                                                    </li>
+                                                </ul>
+                                                    <p class="rate" style="font-size: 0.7em;">
+                                                        <span>${rate}</span>
+                                                    </p>
+                                            </div>
+                                        </article>`;
+                            }
+                            
+                            $(".rooms-container").html(html)
+                            $("#title_Alley").text("keki " + id)
+
+                            // Initialize Slick Slider after the content is loaded
+                            $('.room-image-slider').slick({
+                                dots: true,
+                                infinite: true,
+                                speed: 300,
+                                slidesToShow: 1,
+                                adaptiveHeight: true
+                            });
+
+                        } else {
+                            const html = "<h1>ไม่มีข้อมูล</h1>"
+                            $(".rooms-container").html(html)
+                        }
+
+                        console.log(data);
+
+                    }
+                })
+
+            }
+
+            load_data()
+        })
+    </script>
+</body>
+
+</html>

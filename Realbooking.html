@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find Accommodation</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #ffe4e1, #ffb6c1);
+  }
+  .search-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 960px;
+    height: 70px;
+  }
+  .search-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  .search-row > div {
+    width: calc(16.66% - 10px); /* 6 ช่องเลือก 100% ในแนวนอน */
+    height: 100%;
+  }
+  .search-row > div:last-child {
+    width: 100px; /* ปรับขนาดปุ่มให้พอดีกับพื้นที่ */
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="date"], input[type="tel"], select {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .search-button {
+    width: 100%;
+    height: 40px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .room-availability {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #555;
+  }
+  @media (max-width: 600px) {
+    .search-row {
+      flex-direction: column;
+    }
+    .search-row > div {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="search-container">
+  <div class="search-row">
+    <div>
+      <label for="alley-select">Alley</label>
+      <select id="alley-select">
+        <option value="">Select Alley</option>
+        <option value="เกกีงาม 1">เกกีงาม 1</option>
+        <option value="เกกีงาม 2">เกกีงาม 2</option>
+        <option value="เกกีงาม 3">เกกีงาม 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="hostel-select">Dormitory</label>
+      <select id="hostel-select">
+        <option value="">Select Dormitory</option>
+        <option value="กฤตเมธ" data-rooms="10">กฤตเมธ (10 Rooms)</option>
+        <option value="SSY" data-rooms="10">SSY (10 Rooms)</option>
+        <option value="ชัยพร" data-rooms="10">ชัยพร (10 Rooms)</option>
+        <option value="ขวัญพยงค์" data-rooms="10">ขวัญพยงค์ (10 Rooms)</option>
+        <option value="ดวงรวี" data-rooms="10">ดวงรวี (10 Rooms)</option>
+      </select>
+    </div>
+    <div>
+      <label for="checkin">Check In</label>
+      <input type="date" id="checkin">
+    </div>
+    <div>
+      <label for="duration">Duration</label>
+      <select id="duration">
+        <option value="3">3 Months</option>
+        <option value="6">6 Months</option>
+        <option value="12">12 Months</option>
+      </select>
+    </div>
+    <div>
+      <label for="rooms">Rooms</label>
+      <select id="rooms">
+        <option value="1">1 Room</option>
+        <option value="2">2 Rooms</option>
+        <option value="3">3 Rooms</option>
+        <option value="4">4 Rooms</option>
+      </select>
+    </div>
+    <div>
+      <label for="telephone">Telephone</label>
+      <input type="tel" id="telephone" placeholder="Telephone Number">
+    </div>
+    <div>
+      <button class="search-button">Booking</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hostelSelect = document.getElementById('hostel-select');
+  const roomAvailability = document.getElementById('room-availability');
+
+  hostelSelect.addEventListener('change', () => {
+    const selectedOption = hostelSelect.options[hostelSelect.selectedIndex];
+    const availableRooms = selectedOption.getAttribute('data-rooms');
+    if (availableRooms) {
+      roomAvailability.textContent = `Available Rooms: ${availableRooms}`;
+    } else {
+      roomAvailability.textContent = '';
+    }
+  });
+</script>
+
+</body>
+</html>

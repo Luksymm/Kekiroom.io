@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root{
+    --transition: all 0.7s ease;
+    --yellow: #d91656;
+    --dark: #fff;
+    --cream: #fff ;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Sarabun', serif; /* เปลี่ยนเป็น Sarabun */
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    line-height: 1.6;
+    background-color: var(--cream); /* ใช้สีครีมเป็นพื้นหลัง */
+    font-family: 'Sarabun', serif;
+}
+
+.btn{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 140px;
+    display: block;
+    margin: 15px auto;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ปุ่มด้วย */
+}
+
+.btn:hover{
+    opacity: 0.85;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 100%;
+    display: block;
+}
+
+@media(max-width: 500px){
+    body{
+        font-size: 14px;
+    }
+}
+
+/** title */
+.title{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 30px;
+    color: var(--yellow);
+    border-bottom: 5px solid var(--dark);
+    width: 235px;
+    margin: 15px 0;
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ title ด้วย */
+}
+
+.sec-width{
+    width: 85vw;
+    margin: 0 auto!important;
+}
+
+/* room */
+.rooms{
+    margin: 40px 0;
+}
+
+.room{
+    margin: 45px 0;
+    padding-bottom: 25px;
+    background: var(--dark);
+    color: #34282c;
+    box-shadow: 10px 10px 10px  rgba(0, 0, 0, 0.1);
+}
+
+.room-text{
+    padding: 5px 20px;
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ room-text ด้วย */
+}
+
+.room-text h3{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Sarabun', serif;
+}
+
+.room-text ul{
+    list-style-type: none;
+    margin: 15px 0;
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ ul ด้วย */
+}
+
+.room-text ul li{
+    padding: 7px 0;
+    font-family: 'Sarabun', serif;
+    list-style-type: disc;
+    color: #333 !important;
+}
+
+.room-text ul li i{
+    color: var(--yellow);
+    margin-right: 10px;
+}
+
+.rate{
+    opacity: 0.8;
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ rate ด้วย */
+}
+
+.rate span{
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--yellow);
+    font-family: 'Sarabun', serif;
+}
+
+.room-image{
+    overflow: hidden;
+}
+
+.room-image img{
+    transition: var(--transition);
+}
+
+.room-image:hover img{
+    transform: scale(1.1);
+}
+
+@media (min-width: 900px){
+    .rooms-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .room{
+        flex: 0 0 calc(50% - 20px);
+        margin: 10px;
+    }
+}
+
+@media(min-width: 1370px){
+    .rooms-container{
+        flex-direction: column;
+    }
+    .room{
+        display: flex;
+        padding-bottom: 0;
+        margin: 5px 0;
+    }
+    .room-image{
+        flex: 1;
+    }
+    .room-image img{
+        height: 100%;
+    }
+    .room-text{
+        flex: 1;
+    }
+    .room:nth-child(even){
+        flex-direction: row-reverse;
+    }
+}
+
+.room-image-slider {
+    width: 100%;
+    max-width: 500px; /* เพิ่มขนาด max-width เพื่อให้ใหญ่ขึ้น */
+    margin: 0 auto;
+}
+.room-image-slider img {
+    width: 100%;
+    height: auto;
+}
+
+/* เพิ่ม CSS สำหรับหัวข้อหอพัก */
+.dorm-title {
+    font-size: 10em; /* ปรับขนาดตามต้องการ ให้ใหญ่ขึ้นมากๆ */
+    font-weight: normal; /* ลดความหนาของตัวอักษร */
+    font-family: 'Sarabun', serif; /* เพิ่ม Sarabun ให้ dorm-title ด้วย */
+}
+
+/* เปลี่ยนสไตล์ปุ่ม Next และ Previous ของ Slick Slider */
+.slick-next.slick-arrow,
+.slick-prev.slick-arrow {
+    background-color: white !important; /* พื้นหลังสีขาว */
+}
+
+.slick-next.slick-arrow:before,
+.slick-prev.slick-arrow:before {
+    color: #d91656 !important; /* สีลูกศรสีชมพู */
+
+}
+.room {
+    box-shadow: 2px 2px 5px rgb(244, 218, 228),
+            -2px -2px 5px rgba(244, 218, 228),
+            2px -2px 5px rgba(244, 218, 228),
+            -2px 2px 5px rgba(244, 218, 228);
+}
+
+.slick-dots li button:before {
+    color: #d91656 !important;
+}

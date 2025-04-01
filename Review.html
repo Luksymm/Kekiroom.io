@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        * {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .section-header span {
+            color: #e91e63; /* สีชมพู */
+        }
+
+        .testimonials {
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .swiper {
+            padding: 20px;
+        }
+
+        .testimonial-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            color: goldenrod;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .swiper-pagination {
+            margin-top: 10px;
+        }
+
+        /* Form Styling */
+        .review-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .review-form input,
+        .review-form textarea,
+        .review-form select {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .review-form button {
+            background: #e91e63;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .review-form button:hover {
+            background: #d81b60;
+        }
+
+        .star-rating i {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+        }
+
+        .star-rating i.active {
+            color: goldenrod;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .dormitory-alley {
+            font-size: 14.4px;
+        }
+
+        .review-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin: 10px auto; /* จัดกึ่งกลางรูปภาพ */
+            display: block; /* ทำให้ margin auto ทำงาน */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section-header">
+        Customer's <span>Review</span>
+    </div>
+
+    <section class="testimonials">
+        <div class="swiper">
+            <div class="swiper-wrapper" id="testimonial-list"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <div class="review-form">
+        <h3>Write a Review</h3>
+        <div class="star-rating">
+            <i class="fa fa-star" data-value="1"></i>
+            <i class="fa fa-star" data-value="2"></i>
+            <i class="fa fa-star" data-value="3"></i>
+            <i class="fa fa-star" data-value="4"></i>
+            <i class="fa fa-star" data-value="5"></i>
+        </div>
+        <select id="alley">
+            <option value="">Select Alley</option>
+            <option value="1">เกกีงาม 1</option>
+            <option value="2">เกกีงาม 2</option>
+            <option value="3">เกกีงาม 3</option>
+        </select>
+        <select id="dormitory">
+            <option value="">Select Dormitory</option>
+        </select>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <textarea id="message" placeholder="Your Review" required></textarea>
+        <input type="file" id="image" accept="image/*">
+        <button onclick="addReview()">Submit</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper", {
+            grabCursor: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        let selectedRating = 5;
+
+        document.querySelectorAll(".star-rating i").forEach(star => {
+            star.addEventListener("click", function () {
+                selectedRating = this.getAttribute("data-value");
+                document.querySelectorAll(".star-rating i").forEach(s => s.classList.remove("active"));
+                for (let i = 0; i < selectedRating; i++) {
+                    document.querySelectorAll(".star-rating i")[i].classList.add("active");
+                }
+            });
+        });
+
+        document.getElementById("alley").addEventListener("change", function () {
+            let alley = this.value;
+            let dormitorySelect = document.getElementById("dormitory");
+            dormitorySelect.innerHTML = "<option value=''>Select Dormitory</option>";
+
+            if (alley === "1") {
+                ["หอพักกฤตเมธ", "หอพักดวงระวี", "หอพักชัยพร", "หอพักSSY", "หอพักขวัญพยงค์"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            } else if (alley === "2") {
+                ["หอพักJ&W", "หอพักศิริวัฒน์", "หอพักกมล", "หอพักแตงกวา", "หอพักสุรัชนี"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            } else if (alley === "3") {
+                ["หอพักวรรธนะ", "หอพักจ้อยช้างเนียม", "หอพักกัลยรัตน์", "หอพักณิชา", "หอพักนาคบำรุงศรี"].forEach(dorm => {
+                    let option = document.createElement("option");
+                    option.value = dorm;
+                    option.text = dorm;
+                    dormitorySelect.appendChild(option);
+                });
+            }
+        });
+
+        function addReview() {
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+            let dormitory = document.getElementById("dormitory").value;
+            let alley = document.getElementById("alley").options[document.getElementById("alley").selectedIndex].text;
+            let image = document.getElementById("image").files[0];
+            let imageURL = image ? URL.createObjectURL(image) : "";
+
+            if (name && message && dormitory && alley) {
+                let stars = "";
+                for (let i = 0; i < selectedRating; i++) {
+                    stars += "<i class='fa fa-star' style='color:goldenrod;'></i>";
+                }
+
+                let reviewHTML = `<div class='swiper-slide testimonial-item'>
+                    <div class='review-header'>
+                        <p class='customer-name' style='font-size: 12px;'>${name}</p>
+                        <div class='stars'>${stars}</div>
+                    </div>
+                    ${imageURL ? `<img src='${imageURL}' class='review-image'>` : ""}
+                    <p class='customer-name dormitory-alley'>${alley} ${dormitory}</p>
+                    <p class='testimonial-text'>${message}</p>
+                </div>`;
+
+                document.getElementById("testimonial-list").innerHTML += reviewHTML;
+                swiper.update();
+
+                document.getElementById("name").value = "";
+                document.getElementById("message").value = "";
+                document.getElementById("dormitory").value = "";
+                document.getElementById("image").value = "";
+                document.querySelectorAll(".star-rating i").forEach(s => s.classList.remove("active"));
+                for (let i = 0; i < 5; i++) {
+                    document.querySelectorAll(".star-rating i")[i].classList.add("active");
+                }
+                selectedRating = 5;
+            } else {
+                alert("Please fill in all fields!");
+            }
+        }
+    </script>
+
+</body>
+</html>
